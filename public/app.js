@@ -16,7 +16,7 @@ myApp.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $ur
         url: '/home',
         templateUrl: 'home.html',
         controller: 'homeCtrl as vm',
-        data: 'zzzdes'
+        data: 'zzzdess'
       })
 
       .state('other', {
