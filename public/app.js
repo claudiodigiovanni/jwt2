@@ -23,7 +23,7 @@ myApp.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $ur
         url: '/other',
         templateUrl: 'other.html',
         controller: 'otherCtrl as vm',
-        data: 'xxxx'
+        data: 'xxxxd'
       })
 
   // if none of the above states are matched, use this as the fallback
