@@ -10,24 +10,24 @@ myApp.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $ur
         url: '/login',
         templateUrl: 'login.html',
         controller: 'loginCtrl as vm',
-        data: 'xxxx'
+        requireLogin: 'NO'
       })
       .state('home', {
         url: '/home',
         templateUrl: 'home.html',
         controller: 'homeCtrl as vm',
-        data: 'zzzdess'
+        requireLogin: 'Yes'
       })
 
       .state('other', {
         url: '/other',
         templateUrl: 'other.html',
         controller: 'otherCtrl as vm',
-        data: 'xxxxd'
+        requireLogin: 'Yes'
       })
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise('/home');
 
 }])
 
@@ -203,7 +203,19 @@ function AuthInterceptor(AuthTokenFactory){
 
 }
 
+myApp.run(['$rootScope', '$state', function ($rootScope, $state) {
+  $rootScope.$on('$stateChangeStart', function (event, next) {
 
+    console.log('Sto per cambiare....');
+    //console.log(next.requireLogin);
+    if (next.requireLogin === 'Yes'){
+      //event.preventDefault();
+      console.log(next.requireLogin);
+      //$state.go('login');
+    }
+
+  });
+}]);
 
 
 
